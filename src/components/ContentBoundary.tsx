@@ -5,7 +5,7 @@ import { Alert, CircularProgress } from '@mui/material'
 interface Props<T> {
   isPending: boolean
   isError: boolean
-  data: any
+  data?: T
   error: Error | null
   children?: (data: T) => React.ReactNode,
 }

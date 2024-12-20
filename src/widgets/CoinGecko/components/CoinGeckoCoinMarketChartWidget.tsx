@@ -11,7 +11,7 @@ import { WidgetConfigCoinGeckoCoinMarketChart } from '~/widgets/types'
 import { useCoinGeckoCoinMarketChartQuery } from '../hooks'
 
 import { CoinGeckoLogo } from './CoinGeckoLogo.tsx'
-import { CoinGeckoCoinMarketChartWidgetContent, CoinGeckoCoinMarketChartData } from './CoinGeckoCoinMarketChartWidgetContent'
+import { CoinGeckoCoinMarketChartWidgetContent } from './CoinGeckoCoinMarketChartWidgetContent'
 
 interface Props {
   config: WidgetConfigCoinGeckoCoinMarketChart['options']
@@ -27,7 +27,7 @@ export const CoinGeckoCoinMarketChartWidget: React.FC<Props> = ({ config, openDe
       <CoinGeckoLogo sx={{ bottom: 5, top: undefined }} />
       <OpenDetailLink openDetail={openDetail} />
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-        <ContentBoundary<CoinGeckoCoinMarketChartData> isPending={isPending} isError={isError} data={data} error={error}>
+        <ContentBoundary isPending={isPending} isError={isError} data={data} error={error}>
           {(data) => (
             <CoinGeckoCoinMarketChartWidgetContent
               config={config}

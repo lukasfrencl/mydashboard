@@ -5,7 +5,6 @@ import { Detail } from '~/components/Detail'
 
 import { DetailConfigOpenWeatherForecast } from '~/widgets/types'
 
-import { OpenWeatherForecastResponse } from '../api/types'
 import { useOpenWeatherForecastQuery } from '../hooks'
 
 import { OpenWeatherForecastDetailContent } from './OpenWeatherForecastDetailContent'
@@ -19,7 +18,7 @@ export const OpenWeatherForecastDetail: React.FC<Props> = ({ config }) => {
 
   return (
     <Detail>
-      <ContentBoundary<OpenWeatherForecastResponse> isPending={isPending} isError={isError} data={data} error={error}>
+      <ContentBoundary isPending={isPending} isError={isError} data={data} error={error}>
         {(data) => (
           <OpenWeatherForecastDetailContent config={config} data={data} />
         )}
