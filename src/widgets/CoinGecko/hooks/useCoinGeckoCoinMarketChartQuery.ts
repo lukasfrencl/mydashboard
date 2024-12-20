@@ -4,13 +4,15 @@ import { fetchCoinGeckoCoinMarketChart } from '../api'
 
 import { useCoinGeckoCoinQuery } from './useCoinGeckoCoinQuery'
 
+const REFETCH_INTERVAL_MS = 1000 * 60 * 60
+
 export const useCoinGeckoCoinMarketChartQuery = (id: string, currency: string, days: number) => {
   const coin = useCoinGeckoCoinQuery(id)
 
   const coinMarketChart = useQuery({
     queryKey: ['coin_gecko_coin_market_chart', id, days],
     queryFn: () => fetchCoinGeckoCoinMarketChart(id, currency, days),
-    refetchInterval: 1000 * 60 * 60,
+    refetchInterval: REFETCH_INTERVAL_MS,
   })
 
   return {

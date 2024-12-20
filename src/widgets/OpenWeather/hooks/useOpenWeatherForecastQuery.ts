@@ -5,6 +5,8 @@ import { OpeWeatherUnits } from '../types'
 
 import { useOpenWeatherGeoQuery } from './useOpenWeatherGeoQuery'
 
+const REFETCH_INTERVAL_MS = 1000 * 60 * 5
+
 export const useOpenWeatherForecastQuery = (location: string, units: OpeWeatherUnits) => {
   const geo = useOpenWeatherGeoQuery(location)
 
@@ -12,7 +14,7 @@ export const useOpenWeatherForecastQuery = (location: string, units: OpeWeatherU
     queryKey: ['open_weather_forecast', geo.data?.lat, geo.data?.lon, units],
     queryFn: () => fetchOpenWeatherForecast(geo.data?.lat ?? 0, geo.data?.lon ?? 0, units),
     enabled: !!geo.data?.lat && !!geo.data?.lon,
-    refetchInterval: 1000 * 60 * 5,
+    refetchInterval: REFETCH_INTERVAL_MS,
   })
 
   return {
